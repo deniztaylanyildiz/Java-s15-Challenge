@@ -11,7 +11,9 @@ public class Magazine extends Publication {
         super(id, title, author, price);
         this.issueNumber = issueNumber;
     }
-
+    public int getIssue() {
+        return issueNumber;
+    }
     @Override
     public String getCategory() {
         return "Dergi";
@@ -19,7 +21,8 @@ public class Magazine extends Publication {
 
     @Override
     public void display() {
-
-        System.out.println("[Dergi] ID: " + getId() + " | " + getTitle() + " - Sayı: " + issueNumber);
+        String status = isBorrowed() ? "[ÖDÜNÇ VERİLDİ]" : "[RAFTA / MÜSAİT]";
+        System.out.println(String.format("%-5s | %-20s | %-15s | Sayı: %-5d | %s",
+                getId(), getTitle(), getAuthor(), getIssue(), status));
     }
 }

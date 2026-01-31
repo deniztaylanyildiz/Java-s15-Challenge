@@ -9,7 +9,9 @@ public class StudyBook extends Publication {
         super(id, title, author, price);
         this.edition = edition;
     }
-
+    public String getEdition() {
+        return edition;
+    }
     @Override
     public String getCategory() {
         return "Ders Kitabı";
@@ -17,7 +19,8 @@ public class StudyBook extends Publication {
 
     @Override
     public void display() {
-        super.display(); // Artık hata vermez çünkü üst sınıfta içi dolu bir display var
-        System.out.println(" | Baskı: " + edition + " | Kategori: " + getCategory());
+        String status = isBorrowed() ? "[ÖDÜNÇ VERİLDİ]" : "[RAFTA / MÜSAİT]";
+        System.out.println(String.format("%-5s | %-20s | %-15s | %-10s | %s",
+                getId(), getTitle(), getAuthor(), getEdition(), status));
     }
 }

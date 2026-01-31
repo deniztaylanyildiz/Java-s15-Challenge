@@ -6,37 +6,19 @@ public abstract class Publication {
     private boolean isBorrowed = false;
 
     public Publication(String id, String title, String author, double price) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.price = price;
+        this.id = id; this.title = title; this.author = author; this.price = price;
     }
 
-    // --- Soyut Metotlar ---
-    public abstract String getCategory();
-
-
-    public void display() {
-        System.out.print("[ID: " + id + "] " + title + " - Yazar: " + author);
-    }
-
-    // --- Getter / Setter
-
-    public void setBorrowed(boolean borrowed) { // LibraryManager'ın aradığı metot buydu!
-        this.isBorrowed = borrowed;
-    }
-
-    public boolean isBorrowed() {
-        return isBorrowed;
-    }
-
+    // Getters & Setters (Encapsulation)
     public String getId() { return id; }
     public String getTitle() { return title; }
-
-    public String getAuthor() { return author; } // Arama işlemi için gerekli
-    public double getPrice() { return price; }   // Fatura işlemi için gerekli
-
-    // Güncelleme işlemi için setterlar
-    public void setTitle(String title) { this.title = title; }
+    public String getAuthor() { return author; }
+    public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+    public void setTitle(String title) { this.title = title; }
+    public boolean isBorrowed() { return isBorrowed; }
+    public void setBorrowed(boolean borrowed) { isBorrowed = borrowed; }
+
+    public abstract String getCategory();
+    public abstract void display(); // Polymorphism
 }
