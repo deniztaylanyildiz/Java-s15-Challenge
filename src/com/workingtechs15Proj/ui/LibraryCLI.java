@@ -39,9 +39,11 @@ public class LibraryCLI {
     private void showMenu() {
         System.out.println("\n----------- İŞLEM MENÜSÜ -----------");
         System.out.println("1. Kitap/Dergi Ekle    | 2. Envanteri Listele");
-        System.out.println("5. Kategoriye Göre Ara | 7. Yeni Üye Kaydı");
-        System.out.println("8. Üyeleri Listele     | 9. ÖDÜNÇ VER (Fatura)");
-        System.out.println("10. İADE AL (Refund)   | 0. GÜVENLİ ÇIKIŞ");
+        System.out.println("3. Kitap Sil           | 4. Üye Sil");
+        System.out.println("5. Kategoriye Göre Ara | 6. Kitap Ara (İsim veya Yazar) ");
+        System.out.println("7. Yeni Üye Kaydı      | 8. Üyeleri Listele");
+        System.out.println("9. KIRAYA VER          |10. İADE AL (Refund) ");
+        System.out.println("                0. GÜVENLİ ÇIKIŞ");
         System.out.println("------------------------------------");
     }
 
@@ -49,7 +51,10 @@ public class LibraryCLI {
         switch (choice) {
             case "1" -> inventory.addNewPublication();
             case "2" -> inventory.listAll();
+            case "3" -> inventory.removePublication();
+            case "4" -> memberService.removeMember();
             case "5" -> inventory.searchByCategory();
+            case "6" -> inventory.searchPublication();
             case "7" -> memberService.registerMember();
             case "8" -> memberService.listMembers();
             case "9" -> transaction.executeBorrow();
@@ -59,10 +64,18 @@ public class LibraryCLI {
         }
     }
 
-    // Sistem ilk açıldığında boş kalmasın diye örnek veriler
+
     public void loadInitialData() {
-        System.out.println(">>> Başlangıç verileri yükleniyor...");
-        // Not: Bu verileri doğrudan InventoryService veya Repository üzerinden de ekleyebilirsin.
-        System.out.println(">>> Yükleme tamamlandı.\n");
+
+        this.inventory.getRepo().saveBook(new StudyBook("1001", "Java Programming", "Deitel", 450.0, "11. Edition"));
+        this.inventory.getRepo().saveBook(new StudyBook("1002", "Clean Code", "Robert Martin", 380.0, "1. Edition"));
+
+        this.inventory.getRepo().saveBook(new Magazine("2001", "Scientific American", "Nature Group", 75.0, 542));
+
+        // Eğer değişken adın sadece 'memberService' ise
+        this.memberService.getRepo().saveMember(new Student("1", "Ahmet Yılmaz"));
+        this.memberService.getRepo().saveMember(new Faculty("3", "Doç. Dr. Mehmet Öz"));
+
+        System.out.println("[Sistem] Başlangıç verileri başarıyla yüklendi.");
     }
 }

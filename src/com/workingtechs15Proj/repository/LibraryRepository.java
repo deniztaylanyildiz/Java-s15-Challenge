@@ -33,7 +33,14 @@ public class LibraryRepository {
                 .filter(b -> b.getCategory().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
     }
-
+    public void deleteBook(String id) {
+        books.remove(id); // HashMap'ten anahtar ile siler
+    }
+    public void deleteMember(String id) {
+        if (members.containsKey(id)) {
+            members.remove(id);
+        }
+    }
     public Collection<Publication> getAllBooks() { return books.values(); }
     public Collection<MemberRecord> getAllMembers() { return members.values(); }
 }

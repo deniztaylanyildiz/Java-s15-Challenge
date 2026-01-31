@@ -7,8 +7,11 @@ import com.workingtechs15Proj.utils.InputReader;
 
 public class Main {
     public static void main(String[] args) {
+        //Data
         LibraryRepository repo = new LibraryRepository();
+        //Kullanıcı inputları
         InputReader input = new InputReader();
+        //Odeme altyapısı-->Fatura sistemimiz
         IPaymentService payment = new InvoiceManager();
         LibraryManager manager = new LibraryManager(repo, payment);
 

@@ -9,12 +9,17 @@ public class InputReader {
         return scanner.nextLine();
     }
 
-    public double readDouble(String msg) {
-        try {
-            return Double.parseDouble(readString(msg));
-        } catch (Exception e) {
-            System.out.println("Hata: Geçersiz sayısal değer!");
-            return 0;
+    public double readDouble(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                double val = scanner.nextDouble();
+                scanner.nextLine(); // Temizlik
+                return val;
+            } catch (Exception e) {
+                System.out.println("[!] Geçersiz sayı formatı!");
+                scanner.nextLine(); // Hatalı girişi atla
+            }
         }
     }
 }

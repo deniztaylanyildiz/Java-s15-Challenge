@@ -4,7 +4,7 @@ import com.workingtechs15Proj.repository.LibraryRepository;
 
 public class ValidationUtil {
     public static boolean isValidId(String id) {
-        return id != null && id.matches("\\d+"); // Sadece rakam
+        return id != null && id.matches("\\d+");
     }
 
     public static boolean isBookExists(LibraryRepository repo, String id) {
@@ -24,4 +24,13 @@ public class ValidationUtil {
     }
 
     public static boolean isPositive(double val) { return val > 0; }
+
+    public static boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) return false;
+        return str.matches("\\d+");
+    }
+
+
+
 }
+
