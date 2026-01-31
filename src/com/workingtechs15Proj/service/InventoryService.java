@@ -109,6 +109,24 @@ public class InventoryService {
         }
 
     }
+    public void updatePrice() {
+        String id = input.readString("Fiyatı güncellenecek Kitap/Dergi ID: ");
+        Publication pub = repo.findBookById(id);
+
+        if (pub != null) {
+            System.out.println("Mevcut Fiyat: " + pub.getPrice());
+            double newPrice = input.readDouble("Yeni Fiyat: ");
+
+            if (newPrice >= 0) {
+                pub.setPrice(newPrice);
+                System.out.println("[✔] Fiyat güncellendi. Yeni Fiyat: " + pub.getPrice());
+            } else {
+                System.out.println("[!] Hata: Fiyat negatif olamaz!");
+            }
+        } else {
+            System.out.println("[!] Hata: Kayıt bulunamadı!");
+        }
+    }
     public LibraryRepository getRepo() {
         return this.repo;
     }

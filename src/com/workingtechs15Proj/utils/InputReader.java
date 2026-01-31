@@ -18,7 +18,7 @@ public class InputReader {
                 return val;
             } catch (Exception e) {
                 System.out.println("[!] Geçersiz sayı formatı!");
-                scanner.nextLine(); // Hatalı girişi atla
+                scanner.nextLine();
             }
         }
     }

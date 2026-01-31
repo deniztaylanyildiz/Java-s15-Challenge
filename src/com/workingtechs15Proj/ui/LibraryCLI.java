@@ -43,7 +43,7 @@ public class LibraryCLI {
         System.out.println("5. Kategoriye Göre Ara | 6. Kitap Ara (İsim veya Yazar) ");
         System.out.println("7. Yeni Üye Kaydı      | 8. Üyeleri Listele");
         System.out.println("9. KIRAYA VER          |10. İADE AL (Refund) ");
-        System.out.println("                0. GÜVENLİ ÇIKIŞ");
+        System.out.println("T.Kitap Fiyatı Kontrol | 0. GÜVENLİ ÇIKIŞ");
         System.out.println("------------------------------------");
     }
 
@@ -59,6 +59,7 @@ public class LibraryCLI {
             case "8" -> memberService.listMembers();
             case "9" -> transaction.executeBorrow();
             case "10" -> transaction.executeReturn();
+            case "T", "t" -> inventory.updatePrice();
             case "0" -> System.out.println("\nSistemden başarıyla çıkış yapıldı. İyi günler!");
             default -> System.out.println("\n[!] Hata: Geçersiz bir seçim yaptınız, tekrar deneyin.");
         }
@@ -68,6 +69,8 @@ public class LibraryCLI {
     public void loadInitialData() {
 
         this.inventory.getRepo().saveBook(new StudyBook("1001", "Java Programming", "Deitel", 450.0, "11. Edition"));
+        this.inventory.getRepo().saveBook(new StudyBook("1010", "C++ Programming", "KimJor", 456.0, "13. Edition"));
+        this.inventory.getRepo().saveBook(new StudyBook("1011", "Python Programming", "Fahrens", 4522.0, "17. Edition"));
         this.inventory.getRepo().saveBook(new StudyBook("1002", "Clean Code", "Robert Martin", 380.0, "1. Edition"));
 
         this.inventory.getRepo().saveBook(new Magazine("2001", "Scientific American", "Nature Group", 75.0, 542));
