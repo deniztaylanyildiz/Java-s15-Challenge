@@ -1,12 +1,18 @@
 package com.workingtechs15Proj.app;
 
+import com.workingtechs15Proj.Model.abs.MemberRecord;
 import com.workingtechs15Proj.repository.LibraryRepository;
 import com.workingtechs15Proj.service.*;
 import com.workingtechs15Proj.ui.LibraryCLI;
 import com.workingtechs15Proj.utils.InputReader;
 
 public class Main {
+
+
     public static void main(String[] args) {
+
+
+
         //Data
         LibraryRepository repo = new LibraryRepository();
         //Kullanıcı inputları
@@ -22,5 +28,8 @@ public class Main {
         LibraryCLI cli = new LibraryCLI(inv, mem, trans);
         cli.loadInitialData();
         cli.start();
+
+
+
     }
 }

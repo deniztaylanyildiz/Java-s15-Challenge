@@ -14,6 +14,9 @@ public abstract class MemberRecord {
     public String getName() { return name; }
     public Set<Publication> getBorrowedBooks() { return borrowedBooks; }
 
+
+
+
     // HATA ÇÖZÜMÜ: Bu metodu ekliyoruz
     public abstract int getMaxBookLimit();
     public abstract String getMemberType();
